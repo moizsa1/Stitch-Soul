@@ -67,7 +67,7 @@ const PRODUCTS = [
     colors: ["Champagne","Midnight","Rust"],
     description: "Cut on the bias from 100% heavyweight mulberry silk, the Aveline skims the body with a liquid-like fluidity. Designed with meticulous attention to drape.",
     features: ["100% Heavyweight Mulberry Silk (22 Momme)","Bias-cut for a fluid, adaptive fit","Ethically crafted in our Milan atelier"],
-    image: "images/WhatsApp Image 2026-05-07 at 7.04.36 PM (2).jpeg",
+    image: "images/western 1.jpeg",
     badge: null
   },
   {
@@ -79,7 +79,7 @@ const PRODUCTS = [
     colors: ["Navy","Charcoal","Camel"],
     description: "Structured wool blend with satin lapels. A cornerstone of the considered wardrobe — equally commanding in a boardroom or gallery opening.",
     features: ["Structured Wool Blend","Satin-Peak Lapels","Half-canvas construction"],
-    image: "images/WhatsApp Image 2026-05-07 at 7.04.37 PM.jpeg",
+    image: "images/western 2.jpeg",
     badge: null
   },
   {
@@ -91,7 +91,7 @@ const PRODUCTS = [
     colors: ["Blush","Ivory","Black"],
     description: "Flowing silk blouse in soft blush pink with delicate cuffs. The kind of piece that whispers luxury without shouting it.",
     features: ["100% Silk Crepe de Chine","Delicate pintuck cuffs","Dry Clean recommended"],
-    image: "images/WhatsApp Image 2026-05-07 at 7.04.37 PM (1).jpeg",
+    image: "images/western 3.jpeg",
     badge: null
   },
   {
@@ -103,7 +103,7 @@ const PRODUCTS = [
     colors: ["Cognac","Black","Stone"],
     description: "Classic leather ankle boots handcrafted by master cobblers. Rich, full-grain leather that develops a patina unique to the wearer.",
     features: ["Full-Grain Leather Upper","Leather-Lined Interior","Hand-stitched Goodyear welt"],
-    image: "images/WhatsApp Image 2026-05-07 at 7.04.38 PM.jpeg",
+    image: "images/western.jpeg",
     badge: null
   },
   {
@@ -114,8 +114,8 @@ const PRODUCTS = [
     sizes: ["XS","S","M","L","XL"],
     colors: ["Sage","Oat","Charcoal"],
     description: "Heavyweight cotton-cashmere cable knit. The kind of sweater you reach for every morning without a second thought.",
-    features: ["Cotton-Cashmere Blend","Cable-knit construction","Machine washable (cold)"],
-    image: "images/WhatsApp Image 2026-05-07 at 7.04.38 PM (1).jpeg",
+    features: ["Cotton-Cashmire Blend","Cable-knit construction","Machine washable (cold)"],
+    image: "images/western 1.jpeg",
     badge: null
   },
   {
@@ -127,7 +127,7 @@ const PRODUCTS = [
     colors: ["Gold","Silver"],
     description: "Delicate gold chain with a single freshwater pearl drop. The detail that elevates everything.",
     features: ["18K Gold-Plated Chain","Freshwater Pearl Pendant","Lobster clasp closure"],
-    image: "images/WhatsApp Image 2026-05-07 at 7.04.39 PM.jpeg",
+    image: "images/western 2.jpeg",
     badge: null
   },
   {
@@ -139,7 +139,7 @@ const PRODUCTS = [
     colors: ["Natural","Black"],
     description: "Woven rattan bag with cognac leather accents and top-handle. Artisan-crafted in Bali, designed for your best days.",
     features: ["Hand-woven Rattan Body","Leather trim & handles","Cotton twill lining"],
-    image: "images/WhatsApp Image 2026-05-07 at 7.04.45 PM.jpeg",
+    image: "images/western 3.jpeg",
     badge: null
   },
   
