@@ -5,32 +5,61 @@
 
 // ── PRODUCT DATABASE ─────────────────────────────────────────
 const PRODUCTS = [
+  // ── EASTERN MEN ──────────────────────────────────────
   {
     id: 1,
-    name: "The Oxford Linen Shirt",
-    price: 145,
-    category: "casual",
-    sizes: ["XS","S","M","L","XL"],
-    colors: ["Ivory","Sand","Slate"],
-    description: "Meticulously tailored from 100% Belgian linen, the Oxford Shirt delivers effortless refinement for the modern wardrobe. Relaxed yet structured, it drapes beautifully.",
-    features: ["100% Premium Belgian Linen","Relaxed Tailored Fit","Ethically crafted in our Milan atelier"],
-    image: "images/WhatsApp Image 2026-05-07 at 7.04.36 PM.jpeg",
+    name: "Chocolate Kurta Pajama Set",
+    price: 165,
+    category: "eastern-men",
+    sizes: ["S","M","L","XL","XXL"],
+    colors: ["Chocolate","Cream","Black"],
+    description: "Traditional kurta pajama set in rich chocolate brown. A timeless piece offering comfort and elegance for any occasion. Perfect blend of heritage and contemporary style.",
+    features: ["100% Cotton Blend","Traditional Cut","Embroidered Detailing"],
+    image: "images/eastern male.jpeg",
     badge: null
   },
   {
     id: 2,
-    name: "Pleated Wool Trousers",
-    price: 280,
-    category: "formal",
-    sizes: ["28","30","32","34","36"],
-    colors: ["Charcoal","Navy","Camel"],
-    description: "High-waisted and beautifully draped, these pleated trousers redefine elevated dressing. Cut from a fine Italian wool blend that moves like silk.",
-    features: ["Italian Wool Blend","High-Rise Pleated Cut","Dry Clean Only"],
-    image: "images/WhatsApp Image 2026-05-07 at 7.04.36 PM (1).jpeg",
-    badge: "Bestseller"
+    name: "Cream Linen Kurta Set",
+    price: 148,
+    category: "eastern-men",
+    sizes: ["S","M","L","XL","XXL"],
+    colors: ["Cream","Off-White","Beige"],
+    description: "Lightweight cream linen kurta set ideal for summer gatherings. Breathable fabric with relaxed fit ensures all-day comfort.",
+    features: ["100% Premium Linen","Lightweight","Relaxed Fit"],
+    image: "images/eastern male2.jpeg",
+    badge: null
   },
   {
     id: 3,
+    name: "Midnight Black Formal Kurta",
+    price: 185,
+    category: "eastern-men",
+    sizes: ["S","M","L","XL","XXL"],
+    colors: ["Black","Charcoal","Navy"],
+    description: "Sophisticated black formal kurta for weddings and special events. Structured design with subtle embroidery for an upscale look.",
+    features: ["Premium Cotton","Formal Cut","Hand-stitched"],
+    image: "images/eastern male 3.jpeg",
+    badge: "Bestseller"
+  },
+  
+  // ── EASTERN WOMEN ────────────────────────────────────
+  {
+    id: 4,
+    name: "Embroidered Ethnic Ensemble",
+    price: 195,
+    category: "eastern-women",
+    sizes: ["XS","S","M","L","XL"],
+    colors: ["Crimson","Navy","Sapphire"],
+    description: "Beautiful ethnic ensemble featuring intricate embroidery. Perfect for festivals and celebrations with its vibrant colors and detailed craftsmanship.",
+    features: ["Premium Cotton Blend","Hand-Embroidered","Festival Ready"],
+    image: "images/eastern female.jpeg",
+    badge: "New"
+  },
+  
+  // ── WESTERN WEAR ─────────────────────────────────────
+  {
+    id: 5,
     name: "The Aveline Silk Slip",
     price: 485,
     category: "western",
@@ -39,13 +68,13 @@ const PRODUCTS = [
     description: "Cut on the bias from 100% heavyweight mulberry silk, the Aveline skims the body with a liquid-like fluidity. Designed with meticulous attention to drape.",
     features: ["100% Heavyweight Mulberry Silk (22 Momme)","Bias-cut for a fluid, adaptive fit","Ethically crafted in our Milan atelier"],
     image: "images/WhatsApp Image 2026-05-07 at 7.04.36 PM (2).jpeg",
-    badge: "New"
+    badge: null
   },
   {
-    id: 4,
-    name: "Oxford Wool Blazer",
+    id: 6,
+    name: "Structured Wool Blazer",
     price: 345,
-    category: "casual",
+    category: "western",
     sizes: ["XS","S","M","L","XL"],
     colors: ["Navy","Charcoal","Camel"],
     description: "Structured wool blend with satin lapels. A cornerstone of the considered wardrobe — equally commanding in a boardroom or gallery opening.",
@@ -54,7 +83,7 @@ const PRODUCTS = [
     badge: null
   },
   {
-    id: 5,
+    id: 7,
     name: "Silk Whisper Blouse",
     price: 195,
     category: "western",
@@ -66,7 +95,7 @@ const PRODUCTS = [
     badge: null
   },
   {
-    id: 6,
+    id: 8,
     name: "Artisan Leather Boots",
     price: 320,
     category: "western",
@@ -78,10 +107,10 @@ const PRODUCTS = [
     badge: null
   },
   {
-    id: 7,
-    name: "Cable Curator Knit",
+    id: 9,
+    name: "Premium Cable Knit",
     price: 195,
-    category: "casual",
+    category: "western",
     sizes: ["XS","S","M","L","XL"],
     colors: ["Sage","Oat","Charcoal"],
     description: "Heavyweight cotton-cashmere cable knit. The kind of sweater you reach for every morning without a second thought.",
@@ -90,19 +119,7 @@ const PRODUCTS = [
     badge: null
   },
   {
-    id: 8,
-    name: "The Linen Drape Dress",
-    price: 248,
-    category: "eastern",
-    sizes: ["XS","S","M","L"],
-    colors: ["Sage","Dusty Rose","Ivory"],
-    description: "Ethereal linen dress with a signature drape silhouette. Moves like water. Wears like a second skin.",
-    features: ["100% European Linen","Adjustable self-tie belt","Hand-finished hems"],
-    image: "images/WhatsApp Image 2026-05-07 at 7.04.38 PM (3).jpeg",
-    badge: null
-  },
-  {
-    id: 9,
+    id: 10,
     name: "Pearl Drop Necklace",
     price: 95,
     category: "western",
@@ -111,10 +128,10 @@ const PRODUCTS = [
     description: "Delicate gold chain with a single freshwater pearl drop. The detail that elevates everything.",
     features: ["18K Gold-Plated Chain","Freshwater Pearl Pendant","Lobster clasp closure"],
     image: "images/WhatsApp Image 2026-05-07 at 7.04.39 PM.jpeg",
-    badge: "New"
+    badge: null
   },
   {
-    id: 10,
+    id: 11,
     name: "Rattan Day Bag",
     price: 210,
     category: "western",
@@ -125,16 +142,66 @@ const PRODUCTS = [
     image: "images/WhatsApp Image 2026-05-07 at 7.04.45 PM.jpeg",
     badge: null
   },
+  
+  // ── SHAWLS ───────────────────────────────────────────
   {
-    id: 11,
-    name: "Oat Knit Sweater",
-    price: 140,
-    category: "casual",
-    sizes: ["XS","S","M","L","XL"],
-    colors: ["Oat","Stone","Navy"],
-    description: "Minimalist ribbed sweater in a warm oat tone. The foundation of any thoughtful wardrobe.",
-    features: ["Merino Wool Blend","Relaxed ribbed silhouette","Machine washable"],
-    image: "images/WhatsApp Image 2026-05-07 at 7.04.38 PM (1).jpeg",
+    id: 12,
+    name: "Charcoal & Burgundy Fringed Wrap",
+    price: 85,
+    category: "shawls",
+    sizes: ["One Size"],
+    colors: ["Charcoal","Burgundy"],
+    description: "Classic two-tone shawl with elegant fringe detailing. Versatile piece perfect for layering and adds instant sophistication to any outfit.",
+    features: ["Premium Wool Blend","Hand-Fringed Edges","Reversible Design"],
+    image: "images/shawl 1.jpeg",
+    badge: null
+  },
+  {
+    id: 13,
+    name: "Patterned Navy Weave Shawl",
+    price: 95,
+    category: "shawls",
+    sizes: ["One Size"],
+    colors: ["Navy","Beige"],
+    description: "Sophisticated patterned shawl with intricate textile borders. The perfect accessory for both casual and formal occasions.",
+    features: ["Premium Wool","Traditional Weave","Decorative Borders"],
+    image: "images/shawl 2.jpeg",
+    badge: "New"
+  },
+  {
+    id: 14,
+    name: "Cream Wrap Shawl",
+    price: 75,
+    category: "shawls",
+    sizes: ["One Size"],
+    colors: ["Cream","Ivory"],
+    description: "Minimalist cream shawl with clean lines. A timeless piece that complements any wardrobe and works seamlessly for all seasons.",
+    features: ["100% Pure Wool","Smooth Finish","Lightweight"],
+    image: "images/shawl 3.jpeg",
+    badge: null
+  },
+  {
+    id: 15,
+    name: "Ornate Red & Cream Pashmina",
+    price: 155,
+    category: "shawls",
+    sizes: ["One Size"],
+    colors: ["Red","Cream","Gold"],
+    description: "Luxurious pashmina with ornate embroidered borders. A traditional masterpiece showcasing intricate craftsmanship and rich heritage patterns.",
+    features: ["Premium Pashmina","Hand-Embroidered Borders","Traditional Design"],
+    image: "images/shawl 4.jpeg",
+    badge: "Bestseller"
+  },
+  {
+    id: 16,
+    name: "Cream Striped Border Shawl",
+    price: 88,
+    category: "shawls",
+    sizes: ["One Size"],
+    colors: ["Cream","Brown","White"],
+    description: "Classic cream shawl featuring subtle brown and white striped borders. Elegant and versatile, perfect for everyday wear and special occasions alike.",
+    features: ["Premium Wool","Striped Border Detail","Versatile Design"],
+    image: "images/shawl 5.jpeg",
     badge: null
   }
 ];
