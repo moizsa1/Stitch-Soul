@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Product | Stitch &amp; Soul</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,600;1,6..72,300;1,6..72,400;1,6..72,600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+tailwind.config = {
+  darkMode:"class",
+  theme:{extend:{
+    colors:{
+      "secondary":"#2b6485","on-background":"#1b1c1a","surface-container-high":"#eae8e4",
+      "tertiary-fixed-dim":"#9ecfd1","on-tertiary-fixed":"#002021","on-surface":"#1b1c1a",
+      "outline":"#74777f","primary":"#480009","surface-variant":"#e4e2de",
+      "surface-container":"#efeeea","background":"#fbf9f5","outline-variant":"#c4c6cf",
+      "on-secondary":"#ffffff","surface-container-highest":"#e4e2de","surface":"#fbf9f5",
+      "primary-container":"#700013","on-surface-variant":"#44474e",
+      "surface-container-low":"#f5f3ef","surface-container-lowest":"#ffffff","on-primary":"#ffffff",
+      "secondary-container":"#a3d8fe","on-secondary-container":"#255f80",
+    },
+    borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},
+    fontFamily:{headline:["Newsreader","serif"],body:["Manrope","sans-serif"],label:["Manrope","sans-serif"]}
+  }}
+}
+</script>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body class="bg-background text-on-background font-body antialiased min-h-screen flex flex-col">
+
+<!-- ── NAVBAR ── -->
+<nav class="fixed top-0 w-full z-50 h-20 bg-[#fbf9f5]/90 backdrop-blur-xl shadow-[0px_4px_40px_rgba(27,28,26,0.06)]">
+  <div class="flex justify-between items-center px-6 md:px-16 w-full max-w-[1440px] mx-auto h-full">
+    <div class="hidden md:flex items-center gap-8">
+      <a href="index.html" class="text-primary font-label tracking-widest text-xs uppercase font-semibold border-b border-primary pb-0.5">Shop</a>
+      <a href="category.html" class="text-stone-600 font-label tracking-widest text-xs uppercase hover:text-primary transition-colors">Collections</a>
+    </div>
+    <a href="index.html" class="font-headline italic tracking-wide text-2xl text-on-surface hover:text-primary transition-colors">Stitch &amp; Soul</a>
+    <div class="flex items-center gap-5 text-primary">
+      <a href="cart.html" aria-label="Cart" class="hover:opacity-70 transition-opacity relative">
+        <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">shopping_bag</span>
+        <span class="cart-badge absolute -top-1.5 -right-1.5 bg-primary text-on-primary text-[9px] w-4 h-4 rounded-full items-center justify-center font-bold hidden">0</span>
+      </a>
+      <button id="mobile-menu-btn" class="md:hidden hover:opacity-70" aria-label="Menu"><span class="material-symbols-outlined">menu</span></button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="hidden bg-[#fbf9f5] border-t border-outline-variant/20 px-6 py-4 flex flex-col gap-3">
+    <a href="index.html" class="font-label text-xs uppercase tracking-widest text-stone-600 hover:text-primary py-2">Shop</a>
+    <a href="category.html" class="font-label text-xs uppercase tracking-widest text-stone-600 hover:text-primary py-2">Collections</a>
+  </div>
+</nav>
+
+<main class="flex-grow pt-32 pb-24 px-6 md:px-16 max-w-[1440px] mx-auto" id="product-main">
+  <!-- Breadcrumb -->
+  <div class="mb-12 flex items-center gap-3 text-xs font-label uppercase tracking-[0.2em] text-outline">
+    <a href="index.html" class="hover:text-primary transition-colors">Shop</a>
+    <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+    <a href="category.html" class="hover:text-primary transition-colors" id="breadcrumb-cat">Category</a>
+    <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+    <span class="text-on-surface" id="breadcrumb-name">Product</span>
+  </div>
+
+  <!-- Product Layout -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start" id="product-content">
+    <!-- Loading state -->
+    <div class="col-span-2 flex items-center justify-center py-24">
+      <span class="material-symbols-outlined text-4xl text-outline-variant animate-spin">progress_activity</span>
+    </div>
+  </div>
+
+  <!-- Related Products -->
+  <section class="mt-24">
+    <h2 class="font-headline text-3xl text-on-surface mb-12">You may also love</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6" id="related-grid"></div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-surface-container py-16 mt-8">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-12 px-8 md:px-16 max-w-[1440px] mx-auto">
+    <div class="flex flex-col gap-4">
+      <span class="font-headline italic text-xl text-on-surface">Stitch &amp; Soul</span>
+      <p class="font-label text-[10px] uppercase tracking-[0.2em] text-secondary">© 2026 Stitch &amp; Soul. Crafted for the Modern Curator.</p>
+    </div>
+    <div class="flex flex-wrap gap-8 md:justify-end items-center">
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+let selectedSize = null;
+let selectedColor = null;
+let quantity = 1;
+let currentProduct = null;
+
+function loadProduct() {
+  const params = new URLSearchParams(window.location.search);
+  const id = parseInt(params.get('id'));
+  const product = PRODUCTS.find(p => p.id === id) || PRODUCTS[0];
+  currentProduct = product;
+
+  document.title = `${product.name} | Stitch & Soul`;
+  document.getElementById('breadcrumb-cat').textContent = product.category.charAt(0).toUpperCase() + product.category.slice(1);
+  document.getElementById('breadcrumb-name').textContent = product.name;
+
+  selectedSize = product.sizes[product.sizes.length > 1 ? 1 : 0];
+  selectedColor = product.colors[0];
+
+  const content = document.getElementById('product-content');
+  content.innerHTML = `
+    <!-- Gallery -->
+    <div class="flex flex-col gap-4">
+      <div class="w-full aspect-[3/4] bg-surface-container-low rounded overflow-hidden">
+        <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover" id="main-img"/>
+      </div>
+      <div class="grid grid-cols-3 gap-3">
+        <div class="aspect-square bg-surface-container-low rounded overflow-hidden cursor-pointer opacity-60 hover:opacity-100 transition-opacity border-2 border-primary/30" onclick="setMainImg('${product.image}')">
+          <img src="${product.image}" class="w-full h-full object-cover"/>
+        </div>
+        <div class="aspect-square bg-surface-container rounded flex items-center justify-center text-on-surface-variant/40">
+          <span class="material-symbols-outlined text-3xl" style="font-variation-settings:'wght' 200;">texture</span>
+        </div>
+        <div class="aspect-square bg-surface-container-high rounded flex items-center justify-center">
+          <p class="font-headline italic text-sm text-secondary text-center px-3 leading-snug">"Draped to perfection."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Details -->
+    <div class="lg:sticky lg:top-32 flex flex-col gap-0">
+      ${product.badge ? `<span class="inline-flex w-max bg-primary text-on-primary font-label text-[10px] uppercase tracking-wider px-3 py-1 rounded-full mb-4">${product.badge}</span>` : ''}
+      <h1 class="font-headline text-5xl md:text-6xl text-on-background leading-tight tracking-tight mb-3">${product.name}</h1>
+      <div class="text-2xl font-body text-secondary mb-8">${formatPrice(product.price)}</div>
+
+      <!-- Color -->
+      <div class="mb-6">
+        <h3 class="text-xs font-label uppercase tracking-[0.2em] text-on-surface-variant mb-3">
+          Shade: <span class="text-on-surface ml-2" id="color-label">${product.colors[0]}</span>
+        </h3>
+        <div class="flex gap-3 flex-wrap" id="color-btns">
+          ${product.colors.map((c,i) => `
+            <button onclick="selectColor('${c}', this)" 
+              class="px-4 py-2 rounded font-body text-xs border transition-all duration-200 ${i===0 ? 'border-primary bg-primary text-on-primary' : 'border-outline-variant/30 bg-surface-container text-on-surface hover:border-primary/50'}">
+              ${c}
+            </button>
+          `).join('')}
+        </div>
+      </div>
+
+      <!-- Size -->
+      <div class="mb-8">
+        <div class="flex justify-between items-center mb-3">
+          <h3 class="text-xs font-label uppercase tracking-[0.2em] text-on-surface-variant">Size</h3>
+          <a href="#" class="text-xs font-label text-secondary hover:text-primary transition-colors border-b border-secondary/30 pb-0.5">Size Guide</a>
+        </div>
+        <div class="flex flex-wrap gap-2" id="size-btns">
+          ${product.sizes.map((s,i) => `
+            <button onclick="selectSize('${s}', this)"
+              class="px-5 py-2.5 font-body text-sm rounded transition-all duration-200 ${i===1||product.sizes.length===1 ? 'bg-primary text-on-primary shadow-[0_4px_12px_rgba(72,0,9,0.2)]' : 'bg-surface-container text-on-surface hover:bg-surface-container-high'}">
+              ${s}
+            </button>
+          `).join('')}
+        </div>
+      </div>
+
+      <!-- Qty + Add to Cart -->
+      <div class="flex flex-col gap-3 mb-10">
+        <div class="flex gap-3 h-14">
+          <div class="flex items-center bg-surface-container rounded px-2 gap-1">
+            <button onclick="adjustQty(-1)" class="w-9 h-9 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+              <span class="material-symbols-outlined" style="font-size:18px;">remove</span>
+            </button>
+            <span class="font-body text-on-surface w-8 text-center" id="qty-display">1</span>
+            <button onclick="adjustQty(1)" class="w-9 h-9 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+              <span class="material-symbols-outlined" style="font-size:18px;">add</span>
+            </button>
+          </div>
+          <button id="add-to-cart-btn" onclick="addToCart()"
+            class="flex-1 bg-primary text-on-primary rounded font-label uppercase tracking-[0.15em] text-sm hover:bg-primary-container transition-all duration-300 shadow-[0_10px_30px_rgba(72,0,9,0.15)] flex items-center justify-center gap-3 group">
+            <span>Add to Atelier</span>
+            <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_right_alt</span>
+          </button>
+        </div>
+        <a href="cart.html" class="w-full h-14 border border-outline-variant/20 text-secondary bg-transparent rounded font-label uppercase tracking-[0.15em] text-sm hover:bg-surface-container-low transition-colors duration-300 flex items-center justify-center">
+          View Cart
+        </a>
+      </div>
+
+      <!-- Description -->
+      <div class="bg-surface-container-low p-8 rounded flex flex-col gap-4">
+        <h4 class="font-headline text-2xl text-on-background">The Provenance</h4>
+        <p class="font-body text-on-surface-variant leading-loose text-sm">${product.description}</p>
+        <ul class="flex flex-col gap-2 mt-1">
+          ${product.features.map(f => `
+            <li class="flex items-start gap-3 text-sm font-body text-on-surface-variant">
+              <span class="material-symbols-outlined text-secondary" style="font-size:18px;font-variation-settings:'FILL' 1;">check_circle</span>
+              ${f}
+            </li>
+          `).join('')}
+        </ul>
+      </div>
+    </div>
+  `;
+
+  // Related products
+  const related = PRODUCTS.filter(p => p.id !== product.id && p.category === product.category).slice(0, 4);
+  const relatedFill = related.length < 4 ? [...related, ...PRODUCTS.filter(p => p.id !== product.id && !related.includes(p)).slice(0, 4-related.length)] : related;
+  document.getElementById('related-grid').innerHTML = relatedFill.slice(0,4).map(p => `
+    <div class="group flex flex-col">
+      <a href="product.html?id=${p.id}" class="relative w-full aspect-[3/4] bg-surface-container-low rounded overflow-hidden mb-3 block">
+        <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:opacity-80 group-hover:scale-105 transition-all duration-500"/>
+      </a>
+      <h3 class="font-body font-semibold text-on-surface text-sm">${p.name}</h3>
+      <p class="font-body text-secondary text-sm">${formatPrice(p.price)}</p>
+    </div>
+  `).join('');
+}
+
+function setMainImg(src) {
+  document.getElementById('main-img').src = src;
+}
+
+function selectSize(size, btn) {
+  selectedSize = size;
+  document.querySelectorAll('#size-btns button').forEach(b => {
+    b.className = 'px-5 py-2.5 font-body text-sm rounded transition-all duration-200 bg-surface-container text-on-surface hover:bg-surface-container-high';
+  });
+  btn.className = 'px-5 py-2.5 font-body text-sm rounded transition-all duration-200 bg-primary text-on-primary shadow-[0_4px_12px_rgba(72,0,9,0.2)]';
+}
+
+function selectColor(color, btn) {
+  selectedColor = color;
+  document.getElementById('color-label').textContent = color;
+  document.querySelectorAll('#color-btns button').forEach(b => {
+    b.className = 'px-4 py-2 rounded font-body text-xs border transition-all duration-200 border-outline-variant/30 bg-surface-container text-on-surface hover:border-primary/50';
+  });
+  btn.className = 'px-4 py-2 rounded font-body text-xs border transition-all duration-200 border-primary bg-primary text-on-primary';
+}
+
+function adjustQty(delta) {
+  quantity = Math.max(1, Math.min(10, quantity + delta));
+  document.getElementById('qty-display').textContent = quantity;
+}
+
+function addToCart() {
+  if (!currentProduct) return;
+  const btn = document.getElementById('add-to-cart-btn');
+  Cart.addItem(currentProduct.id, selectedSize, selectedColor, quantity);
+  showToast(`${currentProduct.name} added to cart`);
+  
+  // Button feedback
+  btn.innerHTML = `<span class="material-symbols-outlined text-[18px]" style="font-variation-settings:'FILL' 1;">check_circle</span> Added!`;
+  btn.classList.add('bg-green-700');
+  btn.classList.remove('bg-primary');
+  setTimeout(() => {
+    btn.innerHTML = `<span>Add to Atelier</span><span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_right_alt</span>`;
+    btn.classList.remove('bg-green-700');
+    btn.classList.add('bg-primary');
+  }, 2000);
+}
+
+loadProduct();
+</script>
+</body>
+</html>

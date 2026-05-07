@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Collections | Stitch &amp; Soul</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,600;1,6..72,300;1,6..72,400;1,6..72,600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+tailwind.config = {
+  darkMode:"class",
+  theme:{extend:{
+    colors:{
+      "secondary":"#2b6485","on-background":"#1b1c1a","surface-container-high":"#eae8e4",
+      "surface-bright":"#fbf9f5","tertiary-fixed-dim":"#9ecfd1","on-surface":"#1b1c1a",
+      "outline":"#74777f","primary":"#480009","surface-variant":"#e4e2de",
+      "surface-container":"#efeeea","background":"#fbf9f5","outline-variant":"#c4c6cf",
+      "on-secondary":"#ffffff","surface-container-highest":"#e4e2de","surface":"#fbf9f5",
+      "primary-container":"#700013","surface-dim":"#dbdad6","on-surface-variant":"#44474e",
+      "surface-container-low":"#f5f3ef","surface-container-lowest":"#ffffff","on-primary":"#ffffff",
+      "on-primary-fixed":"#410007","secondary-container":"#a3d8fe","on-secondary-container":"#255f80",
+    },
+    borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},
+    fontFamily:{headline:["Newsreader","serif"],body:["Manrope","sans-serif"],label:["Manrope","sans-serif"]}
+  }}
+}
+</script>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body class="bg-background text-on-background font-body antialiased min-h-screen flex flex-col">
+
+<!-- ── NAVBAR ── -->
+<nav class="fixed top-0 w-full z-50 h-20 bg-[#fbf9f5]/90 backdrop-blur-xl shadow-[0px_4px_40px_rgba(27,28,26,0.06)]">
+  <div class="flex justify-between items-center px-6 md:px-16 w-full max-w-[1440px] mx-auto h-full">
+    <div class="hidden md:flex items-center gap-8">
+      <a href="index.html" class="text-stone-600 font-label tracking-widest text-xs uppercase hover:text-primary transition-colors">Shop</a>
+      <a href="category.html" class="text-primary font-label tracking-widest text-xs uppercase font-semibold border-b border-primary pb-0.5">Collections</a>
+
+    </div>
+    <a href="index.html" class="font-headline italic tracking-wide text-2xl text-on-surface hover:text-primary transition-colors">Stitch &amp; Soul</a>
+    <div class="flex items-center gap-5 text-primary">
+      <a href="cart.html" aria-label="Cart" class="hover:opacity-70 transition-opacity relative">
+        <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">shopping_bag</span>
+        <span class="cart-badge absolute -top-1.5 -right-1.5 bg-primary text-on-primary text-[9px] w-4 h-4 rounded-full items-center justify-center font-bold hidden">0</span>
+      </a>
+      <button id="mobile-menu-btn" class="md:hidden hover:opacity-70" aria-label="Menu"><span class="material-symbols-outlined">menu</span></button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="hidden bg-[#fbf9f5] border-t border-outline-variant/20 px-6 py-4 flex flex-col gap-3">
+    <a href="index.html" class="font-label text-xs uppercase tracking-widest text-stone-600 hover:text-primary py-2">Shop</a>
+    <a href="category.html" class="font-label text-xs uppercase tracking-widest text-primary font-semibold py-2">Collections</a>
+  </div>
+</nav>
+
+<main class="flex-grow pt-20">
+  <!-- Hero -->
+  <section class="py-20 px-6 md:px-12 max-w-screen-2xl mx-auto flex flex-col items-center text-center bg-surface-container-low mt-8 mx-8 md:mx-16 rounded-xl mb-12">
+    <span class="text-secondary font-label text-sm uppercase tracking-[0.2em] mb-4">Curated Selection</span>
+    <h1 class="font-headline text-5xl md:text-7xl tracking-tight text-on-surface mb-4 max-w-3xl leading-tight">
+      Collections: <span class="italic text-primary">The Modern Curator</span>
+    </h1>
+    <p class="font-body text-on-surface-variant max-w-xl text-lg font-light leading-relaxed">
+      An exploration of form and fabric. Discover our latest curation bridging timeless tailoring with contemporary ease.
+    </p>
+  </section>
+
+  <!-- Filters + Grid -->
+  <section class="max-w-screen-2xl mx-auto px-6 md:px-12 flex flex-col lg:flex-row gap-12 mb-24">
+    <!-- Sidebar Filters -->
+    <aside class="w-full lg:w-64 shrink-0 flex flex-col gap-8">
+      <div class="flex items-center justify-between pb-4 border-b border-outline-variant/20">
+        <h2 class="font-headline text-2xl text-on-surface">Refine</h2>
+        <span class="material-symbols-outlined text-secondary">tune</span>
+      </div>
+
+      <!-- Category -->
+      <div class="flex flex-col gap-3">
+        <h3 class="font-label text-sm uppercase tracking-[0.1em] text-secondary">Category</h3>
+        <label class="flex items-center gap-3 cursor-pointer group">
+          <input type="checkbox" value="eastern" class="filter-cat form-checkbox h-4 w-4 text-primary rounded-sm"/>
+          <span class="font-body text-on-surface group-hover:text-primary transition-colors text-sm">Eastern</span>
+        </label>
+        <label class="flex items-center gap-3 cursor-pointer group">
+          <input type="checkbox" value="western" class="filter-cat form-checkbox h-4 w-4 text-primary rounded-sm"/>
+          <span class="font-body text-on-surface group-hover:text-primary transition-colors text-sm">Western</span>
+        </label>
+        <label class="flex items-center gap-3 cursor-pointer group">
+          <input type="checkbox" value="casual" class="filter-cat form-checkbox h-4 w-4 text-primary rounded-sm"/>
+          <span class="font-body text-on-surface group-hover:text-primary transition-colors text-sm">Casual</span>
+        </label>
+        <label class="flex items-center gap-3 cursor-pointer group">
+          <input type="checkbox" value="formal" class="filter-cat form-checkbox h-4 w-4 text-primary rounded-sm"/>
+          <span class="font-body text-on-surface group-hover:text-primary transition-colors text-sm">Formal</span>
+        </label>
+      </div>
+
+      <!-- Price -->
+      <div class="flex flex-col gap-3">
+        <h3 class="font-label text-sm uppercase tracking-[0.1em] text-secondary">Price Range</h3>
+        <input type="range" id="price-range" min="50" max="500" value="500" class="w-full accent-primary cursor-pointer"/>
+        <div class="flex justify-between font-body text-xs text-on-surface-variant">
+          <span>$50</span><span id="price-label">Up to $500</span>
+        </div>
+      </div>
+
+      <!-- Sort -->
+      <div class="flex flex-col gap-3">
+        <h3 class="font-label text-sm uppercase tracking-[0.1em] text-secondary">Sort By</h3>
+        <select id="sort-select" class="font-body text-sm text-on-surface bg-surface-container border border-outline-variant/30 rounded p-2 focus:outline-none focus:ring-1 focus:ring-primary">
+          <option value="default">New Arrivals</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="name">Name A–Z</option>
+        </select>
+      </div>
+
+      <button id="clear-filters" class="font-label text-xs uppercase tracking-widest text-secondary hover:text-primary transition-colors border border-outline-variant/30 rounded py-2 px-4 hover:border-primary">Clear All</button>
+    </aside>
+
+    <!-- Product Grid -->
+    <div class="flex-1 flex flex-col gap-6">
+      <!-- Active Filters -->
+      <div id="active-filters" class="flex flex-wrap gap-2 items-center min-h-[2rem]"></div>
+      <!-- Results count -->
+      <p id="results-count" class="font-body text-sm text-on-surface-variant"></p>
+      <!-- Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8" id="product-grid">
+        <!-- injected by JS -->
+      </div>
+      <!-- Empty state -->
+      <div id="empty-state" class="hidden flex-col items-center justify-center py-24 text-center gap-4">
+        <span class="material-symbols-outlined text-5xl text-outline-variant" style="font-variation-settings:'wght' 200;">search_off</span>
+        <p class="font-headline text-2xl text-on-surface-variant">No pieces found</p>
+        <p class="font-body text-sm text-on-surface-variant">Try adjusting your filters</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-surface-container py-16 mt-8">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-12 px-8 md:px-16 max-w-[1440px] mx-auto">
+    <div class="flex flex-col gap-4">
+      <span class="font-headline italic text-xl text-on-surface">Stitch &amp; Soul</span>
+      <p class="font-label text-[10px] uppercase tracking-[0.2em] text-secondary">© 2026 Stitch &amp; Soul. Crafted for the Modern Curator.</p>
+    </div>
+    <div class="flex flex-wrap gap-8 md:justify-end items-center">
+     
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+let filteredProducts = [...PRODUCTS];
+let activeCategories = [];
+let maxPrice = 500;
+let sortMode = 'default';
+
+// Read URL param
+const urlParams = new URLSearchParams(window.location.search);
+const urlCat = urlParams.get('cat');
+if (urlCat) {
+  activeCategories = [urlCat];
+  const cb = document.querySelector(`.filter-cat[value="${urlCat}"]`);
+  if (cb) cb.checked = true;
+}
+
+function applyFilters() {
+  let result = [...PRODUCTS];
+  if (activeCategories.length > 0) {
+    result = result.filter(p => activeCategories.includes(p.category));
+  }
+  result = result.filter(p => p.price <= maxPrice);
+  if (sortMode === 'price-asc') result.sort((a,b) => a.price - b.price);
+  else if (sortMode === 'price-desc') result.sort((a,b) => b.price - a.price);
+  else if (sortMode === 'name') result.sort((a,b) => a.name.localeCompare(b.name));
+  filteredProducts = result;
+  renderGrid();
+  renderActiveFilters();
+}
+
+function renderGrid() {
+  const grid = document.getElementById('product-grid');
+  const empty = document.getElementById('empty-state');
+  const count = document.getElementById('results-count');
+
+  if (filteredProducts.length === 0) {
+    grid.innerHTML = '';
+    empty.classList.remove('hidden');
+    empty.classList.add('flex');
+    count.textContent = '';
+    return;
+  }
+  empty.classList.add('hidden');
+  empty.classList.remove('flex');
+  count.textContent = `${filteredProducts.length} piece${filteredProducts.length !== 1 ? 's' : ''} found`;
+
+  grid.innerHTML = filteredProducts.map(p => `
+    <div class="group flex flex-col">
+      <a href="product.html?id=${p.id}" class="relative w-full aspect-[3/4] bg-surface-container-low rounded overflow-hidden mb-4 block">
+        <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:opacity-80 transition-opacity duration-500 group-hover:scale-105 transition-transform"/>
+        <div class="absolute inset-0 bg-surface/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
+          <span class="bg-surface-container-lowest/90 text-on-surface font-label text-xs uppercase tracking-wider px-5 py-2.5 rounded-full">View Piece</span>
+        </div>
+        ${p.badge ? `<span class="absolute top-3 left-3 bg-primary text-on-primary font-label text-[10px] uppercase tracking-wider px-3 py-1 rounded-full">${p.badge}</span>` : ''}
+      </a>
+      <h3 class="font-body font-semibold text-on-surface text-sm mb-0.5">${p.name}</h3>
+      <p class="font-body text-secondary text-sm font-medium mb-0.5">${formatPrice(p.price)}</p>
+      <p class="font-body text-on-surface-variant text-xs mb-2 line-clamp-1">${p.description.slice(0,60)}…</p>
+      <button onclick="quickAddCat(${p.id}, event)" class="text-left font-headline italic text-secondary text-sm hover:text-primary transition-colors w-max flex items-center gap-1 group">
+        <span class="material-symbols-outlined text-[14px] opacity-0 group-hover:opacity-100 transition-opacity">add_shopping_cart</span>
+        Add to Cart
+      </button>
+    </div>
+  `).join('');
+}
+
+function renderActiveFilters() {
+  const container = document.getElementById('active-filters');
+  const tags = [];
+  activeCategories.forEach(c => {
+    tags.push(`<span class="flex items-center gap-1 bg-surface-container rounded-full px-3 py-1 font-label text-xs capitalize text-on-surface">
+      ${c} <button onclick="removeCategory('${c}')" class="hover:text-primary ml-0.5 text-outline">✕</button>
+    </span>`);
+  });
+  if (maxPrice < 500) {
+    tags.push(`<span class="flex items-center gap-1 bg-surface-container rounded-full px-3 py-1 font-label text-xs text-on-surface">
+      Under $${maxPrice} <button onclick="resetPrice()" class="hover:text-primary ml-0.5 text-outline">✕</button>
+    </span>`);
+  }
+  container.innerHTML = tags.join('');
+}
+
+function removeCategory(cat) {
+  activeCategories = activeCategories.filter(c => c !== cat);
+  const cb = document.querySelector(`.filter-cat[value="${cat}"]`);
+  if (cb) cb.checked = false;
+  applyFilters();
+}
+function resetPrice() {
+  maxPrice = 500;
+  document.getElementById('price-range').value = 500;
+  document.getElementById('price-label').textContent = 'Up to $500';
+  applyFilters();
+}
+
+// Event listeners
+document.querySelectorAll('.filter-cat').forEach(cb => {
+  cb.addEventListener('change', () => {
+    activeCategories = [...document.querySelectorAll('.filter-cat:checked')].map(el => el.value);
+    applyFilters();
+  });
+});
+document.getElementById('price-range').addEventListener('input', e => {
+  maxPrice = parseInt(e.target.value);
+  document.getElementById('price-label').textContent = `Up to $${maxPrice}`;
+  applyFilters();
+});
+document.getElementById('sort-select').addEventListener('change', e => {
+  sortMode = e.target.value;
+  applyFilters();
+});
+document.getElementById('clear-filters').addEventListener('click', () => {
+  activeCategories = [];
+  maxPrice = 500;
+  sortMode = 'default';
+  document.querySelectorAll('.filter-cat').forEach(cb => cb.checked = false);
+  document.getElementById('price-range').value = 500;
+  document.getElementById('price-label').textContent = 'Up to $500';
+  document.getElementById('sort-select').value = 'default';
+  applyFilters();
+});
+
+function quickAddCat(productId, e) {
+  e.preventDefault();
+  const p = PRODUCTS.find(x => x.id === productId);
+  if (!p) return;
+  Cart.addItem(productId, p.sizes[0], p.colors[0]);
+  showToast(`${p.name} added to cart`);
+}
+
+applyFilters();
+</script>
+</body>
+</html>

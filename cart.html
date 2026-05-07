@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Your Cart | Stitch &amp; Soul</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,600;1,6..72,300;1,6..72,400;1,6..72,600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+tailwind.config = {
+  darkMode:"class",
+  theme:{extend:{
+    colors:{
+      "secondary":"#2b6485","on-background":"#1b1c1a","on-surface":"#1b1c1a",
+      "outline":"#74777f","primary":"#480009","surface-variant":"#e4e2de",
+      "surface-container":"#efeeea","background":"#fbf9f5","outline-variant":"#c4c6cf",
+      "on-secondary":"#ffffff","surface":"#fbf9f5","primary-container":"#700013",
+      "on-surface-variant":"#44474e","surface-container-low":"#f5f3ef",
+      "surface-container-lowest":"#ffffff","on-primary":"#ffffff","secondary-container":"#a3d8fe",
+      "on-secondary-container":"#255f80","surface-container-high":"#eae8e4",
+    },
+    borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},
+    fontFamily:{headline:["Newsreader","serif"],body:["Manrope","sans-serif"],label:["Manrope","sans-serif"]}
+  }}
+}
+</script>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body class="bg-background text-on-background font-body antialiased min-h-screen flex flex-col">
+
+<!-- ── NAVBAR ── -->
+<nav class="fixed top-0 w-full z-50 h-20 bg-[#fbf9f5]/90 backdrop-blur-xl shadow-[0px_4px_40px_rgba(27,28,26,0.06)]">
+  <div class="flex justify-between items-center px-6 md:px-16 w-full max-w-[1440px] mx-auto h-full">
+    <div class="hidden md:flex items-center gap-8">
+      <a href="index.html" class="text-stone-600 font-label tracking-widest text-xs uppercase hover:text-primary transition-colors">Shop</a>
+      <a href="category.html" class="text-stone-600 font-label tracking-widest text-xs uppercase hover:text-primary transition-colors">Collections</a>
+    </div>
+    <a href="index.html" class="font-headline italic tracking-wide text-2xl text-on-surface hover:text-primary transition-colors">Stitch &amp; Soul</a>
+    <div class="flex items-center gap-5 text-primary">
+      <a href="cart.html" aria-label="Cart" class="hover:opacity-70 transition-opacity relative">
+        <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">shopping_bag</span>
+        <span class="cart-badge absolute -top-1.5 -right-1.5 bg-primary text-on-primary text-[9px] w-4 h-4 rounded-full items-center justify-center font-bold hidden">0</span>
+      </a>
+      <button id="mobile-menu-btn" class="md:hidden hover:opacity-70" aria-label="Menu"><span class="material-symbols-outlined">menu</span></button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="hidden bg-[#fbf9f5] border-t border-outline-variant/20 px-6 py-4 flex flex-col gap-3">
+    <a href="index.html" class="font-label text-xs uppercase tracking-widest text-stone-600 hover:text-primary py-2">Shop</a>
+    <a href="category.html" class="font-label text-xs uppercase tracking-widest text-stone-600 hover:text-primary py-2">Collections</a>
+  </div>
+</nav>
+
+<main class="flex-grow pt-32 pb-24 px-6 md:px-16 max-w-[1440px] mx-auto w-full">
+  <header class="mb-16">
+    <h1 class="font-headline italic text-5xl md:text-6xl text-on-background tracking-wide mb-3">Your Curated Cart</h1>
+    <p class="text-on-surface-variant font-body text-sm max-w-xl">Review your selections. Shipping and taxes will be calculated at checkout.</p>
+  </header>
+
+  <!-- Empty Cart State -->
+  <div id="empty-cart" class="hidden flex flex-col items-center justify-center py-32 text-center gap-6">
+    <span class="material-symbols-outlined text-6xl text-outline-variant" style="font-variation-settings:'wght' 100;">shopping_bag</span>
+    <h2 class="font-headline text-3xl text-on-surface-variant">Your cart is empty</h2>
+    <p class="font-body text-sm text-on-surface-variant max-w-xs">Discover our curated collections and add pieces you love.</p>
+    <a href="category.html" class="bg-primary text-on-primary font-label text-xs uppercase tracking-[0.2em] px-8 py-4 rounded hover:bg-primary-container transition-colors flex items-center gap-2">
+      Start Shopping <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+    </a>
+  </div>
+
+  <!-- Cart Content -->
+  <div id="cart-content" class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+    <!-- Items -->
+    <div class="lg:col-span-8 flex flex-col gap-6" id="cart-items">
+      <!-- injected by JS -->
+    </div>
+
+    <!-- Summary -->
+    <div class="lg:col-span-4 sticky top-28">
+      <div class="bg-surface-container-low rounded p-8 flex flex-col gap-6">
+        <h2 class="font-headline text-3xl italic text-on-background">Order Summary</h2>
+        <div class="flex flex-col gap-3 font-body text-sm text-on-surface-variant">
+          <div class="flex justify-between">
+            <span>Subtotal</span>
+            <span class="text-on-background font-medium" id="summary-subtotal">$0.00</span>
+          </div>
+          <div class="flex justify-between">
+            <span>Shipping</span>
+            <span>Calculated at checkout</span>
+          </div>
+          <div class="flex justify-between">
+            <span>Tax</span>
+            <span>Calculated at checkout</span>
+          </div>
+        </div>
+        <div class="pt-4 border-t border-outline-variant/20 flex justify-between items-baseline">
+          <span class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Total</span>
+          <span class="font-headline italic text-3xl text-on-background" id="summary-total">$0.00</span>
+        </div>
+        <div class="flex flex-col gap-3">
+          <a href="checkout.html" id="checkout-btn"
+            class="w-full py-4 bg-primary text-on-primary font-body text-sm font-semibold tracking-wide uppercase rounded text-center hover:bg-primary-container transition-colors duration-300 flex items-center justify-center gap-2 group">
+            Proceed to Checkout
+            <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_right_alt</span>
+          </a>
+          <a href="category.html" class="w-full py-4 text-center font-headline italic text-lg text-secondary hover:text-on-secondary-container transition-colors border border-outline-variant/20 rounded">
+            Continue Shopping
+          </a>
+        </div>
+        <div class="flex items-center justify-center gap-2 text-on-surface-variant opacity-60">
+          <span class="material-symbols-outlined text-[20px]" style="font-variation-settings:'FILL' 1;">lock</span>
+          <p class="font-label text-xs tracking-wide">Secure Checkout</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-surface-container py-16 mt-8">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-12 px-8 md:px-16 max-w-[1440px] mx-auto">
+    <div class="flex flex-col gap-4">
+      <span class="font-headline italic text-xl text-on-surface">Stitch &amp; Soul</span>
+      <p class="font-label text-[10px] uppercase tracking-[0.2em] text-secondary">© 2026 Stitch &amp; Soul. Crafted for the Modern Curator.</p>
+    </div>
+    <div class="flex flex-wrap gap-8 md:justify-end items-center">
+     
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+function renderCart() {
+  const items = Cart.getItems();
+  const emptyEl = document.getElementById('empty-cart');
+  const contentEl = document.getElementById('cart-content');
+  const itemsEl = document.getElementById('cart-items');
+
+  if (items.length === 0) {
+    emptyEl.classList.remove('hidden');
+    emptyEl.classList.add('flex');
+    contentEl.classList.add('hidden');
+    return;
+  }
+
+  emptyEl.classList.add('hidden');
+  emptyEl.classList.remove('flex');
+  contentEl.classList.remove('hidden');
+
+  itemsEl.innerHTML = items.map(item => `
+    <div class="flex flex-col sm:flex-row gap-6 p-6 bg-surface-container-lowest rounded transition-all duration-300 hover:shadow-[0px_10px_30px_rgba(27,28,26,0.04)] group" data-key="${item.key}">
+      <div class="w-full sm:w-36 aspect-[3/4] bg-surface-container-low rounded overflow-hidden flex-shrink-0 relative">
+        <a href="product.html?id=${item.productId}">
+          <img src="${item.image}" alt="${item.name}" class="object-cover w-full h-full mix-blend-multiply opacity-90 group-hover:scale-105 transition-transform duration-700"/>
+        </a>
+      </div>
+      <div class="flex flex-col flex-grow justify-between py-1">
+        <div class="flex justify-between items-start gap-4">
+          <div>
+            <a href="product.html?id=${item.productId}"><h3 class="font-headline text-xl text-on-background mb-1 hover:text-primary transition-colors">${item.name}</h3></a>
+            <p class="text-sm font-label text-on-surface-variant">${item.color} · Size: ${item.size}</p>
+          </div>
+          <button onclick="removeItem('${item.key}')" aria-label="Remove" class="text-on-surface-variant hover:text-primary transition-colors p-1 hover:bg-surface-container rounded">
+            <span class="material-symbols-outlined text-[20px]">close</span>
+          </button>
+        </div>
+        <div class="flex justify-between items-center mt-4">
+          <div class="flex items-center border border-outline-variant/30 rounded bg-surface overflow-hidden">
+            <button onclick="changeQty('${item.key}', ${item.quantity - 1})" class="px-3 py-2 text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors">
+              <span class="material-symbols-outlined text-[18px]">remove</span>
+            </button>
+            <span class="px-4 py-2 font-body text-sm font-semibold border-x border-outline-variant/20">${item.quantity}</span>
+            <button onclick="changeQty('${item.key}', ${item.quantity + 1})" class="px-3 py-2 text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors">
+              <span class="material-symbols-outlined text-[18px]">add</span>
+            </button>
+          </div>
+          <span class="font-headline italic text-xl text-on-background">${formatPrice(item.price * item.quantity)}</span>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  const total = Cart.getTotal();
+  document.getElementById('summary-subtotal').textContent = formatPrice(total);
+  document.getElementById('summary-total').textContent = formatPrice(total);
+}
+
+function removeItem(key) {
+  const el = document.querySelector(`[data-key="${key}"]`);
+  if (el) {
+    el.style.opacity = '0';
+    el.style.transform = 'translateX(20px)';
+    el.style.transition = 'all 0.3s ease';
+    setTimeout(() => {
+      Cart.removeItem(key);
+      renderCart();
+    }, 300);
+  }
+}
+
+function changeQty(key, newQty) {
+  if (newQty <= 0) {
+    removeItem(key);
+    return;
+  }
+  Cart.updateQuantity(key, newQty);
+  renderCart();
+}
+
+renderCart();
+window.addEventListener('cartUpdated', renderCart);
+</script>
+</body>
+</html>

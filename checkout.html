@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Checkout | Stitch &amp; Soul</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,600;1,6..72,300;1,6..72,400;1,6..72,600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+tailwind.config = {
+  darkMode:"class",
+  theme:{extend:{
+    colors:{
+      "secondary":"#2b6485","on-background":"#1b1c1a","on-surface":"#1b1c1a",
+      "outline":"#74777f","primary":"#480009","surface-variant":"#e4e2de",
+      "surface-container":"#efeeea","background":"#fbf9f5","outline-variant":"#c4c6cf",
+      "on-secondary":"#ffffff","surface":"#fbf9f5","primary-container":"#700013",
+      "on-surface-variant":"#44474e","surface-container-low":"#f5f3ef",
+      "surface-container-lowest":"#ffffff","on-primary":"#ffffff",
+    },
+    borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},
+    fontFamily:{headline:["Newsreader","serif"],body:["Manrope","sans-serif"],label:["Manrope","sans-serif"]}
+  }}
+}
+</script>
+<link rel="stylesheet" href="style.css"/>
+<style>
+  .field-error { border-color: #ba1a1a !important; }
+  .field-error-msg { color: #ba1a1a; font-size: 0.75rem; margin-top: 4px; display: none; }
+  .field-error-msg.visible { display: block; }
+</style>
+</head>
+<body class="bg-background text-on-surface font-body antialiased min-h-screen flex flex-col">
+
+<!-- Minimal Header -->
+<header class="py-10 px-8 md:px-16 w-full max-w-[1440px] mx-auto flex justify-between items-center">
+  <a href="index.html" class="font-headline italic tracking-wide text-2xl text-on-surface hover:text-primary transition-colors">Stitch &amp; Soul</a>
+  <a href="cart.html" class="flex items-center gap-2 font-label text-xs uppercase tracking-widest text-secondary hover:text-primary transition-colors">
+    <span class="material-symbols-outlined text-[18px]">arrow_back</span> Back to Cart
+  </a>
+</header>
+
+<!-- Empty cart redirect notice -->
+<div id="empty-checkout-notice" class="hidden flex flex-col items-center justify-center py-24 text-center gap-6 px-8">
+  <span class="material-symbols-outlined text-5xl text-outline-variant">remove_shopping_cart</span>
+  <h2 class="font-headline text-3xl text-on-surface-variant">Your cart is empty</h2>
+  <p class="font-body text-sm text-on-surface-variant">Add some pieces before checking out.</p>
+  <a href="category.html" class="bg-primary text-on-primary font-label text-xs uppercase tracking-[0.2em] px-8 py-4 rounded hover:bg-primary-container transition-colors">Browse Collections</a>
+</div>
+
+<!-- Checkout Form -->
+<main class="flex-grow px-8 md:px-16 w-full max-w-[1440px] mx-auto pb-32" id="checkout-form-container">
+  <div class="mb-16">
+    <h1 class="font-headline text-5xl md:text-6xl text-primary tracking-tight">Complete your order</h1>
+    <p class="font-body text-secondary mt-4 text-lg">Please provide your details below.</p>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-16 lg:gap-24">
+    <!-- Left: Forms -->
+    <div class="flex flex-col gap-16">
+      <!-- Delivery -->
+      <section class="flex flex-col gap-8">
+        <header class="flex items-center gap-4">
+          <span class="material-symbols-outlined text-secondary" style="font-variation-settings:'FILL' 1;">local_shipping</span>
+          <h2 class="font-headline text-3xl">Delivery Details</h2>
+        </header>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8">
+          <!-- Full Name -->
+          <div class="flex flex-col gap-2 md:col-span-2">
+            <label class="font-label text-xs tracking-[0.1em] text-secondary uppercase font-semibold" for="fullName">Full Name *</label>
+            <input id="fullName" type="text" placeholder="Jane Doe"
+              class="bg-surface-container focus:bg-surface-container-lowest text-on-surface font-body text-base p-4 rounded outline-none focus:ring-1 focus:ring-primary/30 transition-all placeholder:text-on-surface-variant/50 border-0 shadow-sm shadow-black/5"/>
+            <span class="field-error-msg" id="err-fullName">Please enter your full name</span>
+          </div>
+          <!-- Address -->
+          <div class="flex flex-col gap-2 md:col-span-2">
+            <label class="font-label text-xs tracking-[0.1em] text-secondary uppercase font-semibold" for="address">Shipping Address *</label>
+            <input id="address" type="text" placeholder="123 Atelier Avenue"
+              class="bg-surface-container focus:bg-surface-container-lowest text-on-surface font-body text-base p-4 rounded outline-none focus:ring-1 focus:ring-primary/30 transition-all placeholder:text-on-surface-variant/50 border-0 shadow-sm shadow-black/5"/>
+            <span class="field-error-msg" id="err-address">Please enter your shipping address</span>
+          </div>
+          <!-- Phone -->
+          <div class="flex flex-col gap-2">
+            <label class="font-label text-xs tracking-[0.1em] text-secondary uppercase font-semibold" for="phone">Phone Number *</label>
+            <input id="phone" type="tel" placeholder="+1 (555) 000-0000"
+              class="bg-surface-container focus:bg-surface-container-lowest text-on-surface font-body text-base p-4 rounded outline-none focus:ring-1 focus:ring-primary/30 transition-all placeholder:text-on-surface-variant/50 border-0 shadow-sm shadow-black/5"/>
+            <span class="field-error-msg" id="err-phone">Please enter a valid phone number</span>
+          </div>
+          <!-- Email -->
+          <div class="flex flex-col gap-2">
+            <label class="font-label text-xs tracking-[0.1em] text-secondary uppercase font-semibold" for="email">Email *</label>
+            <input id="email" type="email" placeholder="jane@example.com"
+              class="bg-surface-container focus:bg-surface-container-lowest text-on-surface font-body text-base p-4 rounded outline-none focus:ring-1 focus:ring-primary/30 transition-all placeholder:text-on-surface-variant/50 border-0 shadow-sm shadow-black/5"/>
+            <span class="field-error-msg" id="err-email">Please enter a valid email address</span>
+          </div>
+          <!-- City + Zip -->
+          <div class="flex flex-col gap-2">
+            <label class="font-label text-xs tracking-[0.1em] text-secondary uppercase font-semibold" for="city">City *</label>
+            <input id="city" type="text" placeholder="Milan"
+              class="bg-surface-container focus:bg-surface-container-lowest text-on-surface font-body text-base p-4 rounded outline-none focus:ring-1 focus:ring-primary/30 transition-all placeholder:text-on-surface-variant/50 border-0 shadow-sm shadow-black/5"/>
+            <span class="field-error-msg" id="err-city">Please enter your city</span>
+          </div>
+          <div class="flex flex-col gap-2">
+            <label class="font-label text-xs tracking-[0.1em] text-secondary uppercase font-semibold" for="zip">Postal Code *</label>
+            <input id="zip" type="text" placeholder="20121"
+              class="bg-surface-container focus:bg-surface-container-lowest text-on-surface font-body text-base p-4 rounded outline-none focus:ring-1 focus:ring-primary/30 transition-all placeholder:text-on-surface-variant/50 border-0 shadow-sm shadow-black/5"/>
+            <span class="field-error-msg" id="err-zip">Please enter your postal code</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Payment -->
+      <section class="flex flex-col gap-8">
+        <header class="flex items-center gap-4">
+          <span class="material-symbols-outlined text-secondary" style="font-variation-settings:'FILL' 1;">payments</span>
+          <h2 class="font-headline text-3xl">Payment Method</h2>
+        </header>
+        <div class="flex flex-col gap-4">
+          <!-- Credit Card -->
+          <label class="cursor-pointer flex flex-col p-6 rounded bg-surface-container hover:bg-surface-container-high transition-colors group has-[:checked]:bg-surface-container-lowest has-[:checked]:shadow-[0px_10px_30px_rgba(27,28,26,0.04)] border border-transparent has-[:checked]:border-outline-variant/20">
+            <input checked type="radio" name="paymentMethod" value="card" class="peer sr-only"/>
+            <div class="flex items-center gap-4">
+              <span class="material-symbols-outlined text-secondary peer-checked:text-primary text-2xl" style="font-variation-settings:'FILL' 1;">credit_card</span>
+              <div class="flex flex-col flex-grow">
+                <span class="font-headline text-lg">Credit Card</span>
+                <span class="font-body text-sm text-on-surface-variant">Secure payment via Stripe</span>
+              </div>
+              <span class="material-symbols-outlined text-transparent peer-checked:text-primary transition-colors" style="font-variation-settings:'FILL' 1;">check_circle</span>
+            </div>
+            <!-- Card fields -->
+            <div class="hidden peer-checked:flex flex-col gap-5 mt-6 p-5 bg-surface-container-low rounded">
+              <div class="flex flex-col gap-2">
+                <label class="font-label text-xs tracking-[0.1em] text-secondary uppercase font-semibold">Card Number</label>
+                <input id="cardNumber" type="text" placeholder="0000 0000 0000 0000" maxlength="19"
+                  class="bg-surface-container focus:bg-surface-container-lowest text-on-surface font-body p-3.5 rounded outline-none focus:ring-1 focus:ring-primary/30 border-0 shadow-sm shadow-black/5"/>
+                <span class="field-error-msg" id="err-cardNumber">Please enter a valid card number</span>
+              </div>
+              <div class="grid grid-cols-2 gap-5">
+                <div class="flex flex-col gap-2">
+                  <label class="font-label text-xs tracking-[0.1em] text-secondary uppercase font-semibold">Expiry</label>
+                  <input id="cardExpiry" type="text" placeholder="MM/YY" maxlength="5"
+                    class="bg-surface-container focus:bg-surface-container-lowest text-on-surface font-body p-3.5 rounded outline-none focus:ring-1 focus:ring-primary/30 border-0 shadow-sm shadow-black/5"/>
+                  <span class="field-error-msg" id="err-cardExpiry">Invalid expiry (MM/YY)</span>
+                </div>
+                <div class="flex flex-col gap-2">
+                  <label class="font-label text-xs tracking-[0.1em] text-secondary uppercase font-semibold">CVC</label>
+                  <input id="cardCvc" type="text" placeholder="123" maxlength="4"
+                    class="bg-surface-container focus:bg-surface-container-lowest text-on-surface font-body p-3.5 rounded outline-none focus:ring-1 focus:ring-primary/30 border-0 shadow-sm shadow-black/5"/>
+                  <span class="field-error-msg" id="err-cardCvc">Invalid CVC</span>
+                </div>
+              </div>
+            </div>
+          </label>
+
+          <!-- COD -->
+          <label class="cursor-pointer flex flex-col p-6 rounded bg-surface-container hover:bg-surface-container-high transition-colors group has-[:checked]:bg-surface-container-lowest has-[:checked]:shadow-[0px_10px_30px_rgba(27,28,26,0.04)] border border-transparent has-[:checked]:border-outline-variant/20">
+            <input type="radio" name="paymentMethod" value="cod" class="peer sr-only"/>
+            <div class="flex items-center gap-4">
+              <span class="material-symbols-outlined text-secondary peer-checked:text-primary text-2xl" style="font-variation-settings:'FILL' 1;">local_atm</span>
+              <div class="flex flex-col flex-grow">
+                <span class="font-headline text-lg">Cash on Delivery</span>
+                <span class="font-body text-sm text-on-surface-variant">Pay when you receive your order</span>
+              </div>
+              <span class="material-symbols-outlined text-transparent peer-checked:text-primary transition-colors" style="font-variation-settings:'FILL' 1;">check_circle</span>
+            </div>
+          </label>
+        </div>
+      </section>
+    </div>
+
+    <!-- Right: Order Summary -->
+    <div class="relative">
+      <div class="sticky top-12 bg-surface-container-low rounded p-8 shadow-[0px_20px_40px_rgba(27,28,26,0.05)] flex flex-col gap-8">
+        <h3 class="font-headline text-3xl text-primary">Order Summary</h3>
+
+        <!-- Cart items preview -->
+        <div class="flex flex-col gap-5 max-h-64 overflow-y-auto pr-1 hide-scrollbar" id="checkout-items">
+          <!-- injected by JS -->
+        </div>
+
+        <!-- Totals -->
+        <div class="flex flex-col gap-3 pt-5 border-t border-outline-variant/15">
+          <div class="flex justify-between font-body text-sm text-on-surface-variant">
+            <span>Subtotal</span><span id="co-subtotal">$0.00</span>
+          </div>
+          <div class="flex justify-between font-body text-sm text-on-surface-variant">
+            <span>Shipping</span><span>$15.00</span>
+          </div>
+          <div class="flex justify-between font-headline text-2xl text-primary mt-3 pt-4 border-t border-outline-variant/15">
+            <span>Total</span><span id="co-total">$0.00</span>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <button id="place-order-btn" onclick="placeOrder()"
+          class="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary font-headline italic text-2xl py-5 px-8 rounded flex justify-center items-center gap-3 hover:opacity-90 transition-opacity shadow-[0px_10px_20px_rgba(72,0,9,0.15)] group">
+          Place Order
+          <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+        </button>
+        <p class="font-body text-xs text-center text-on-surface-variant flex items-center justify-center gap-1">
+          <span class="material-symbols-outlined text-[16px]">lock</span> Secure Encrypted Checkout
+        </p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Success Modal -->
+<div id="success-modal" class="hidden fixed inset-0 z-[9999] bg-on-surface/40 backdrop-blur-sm flex items-center justify-center px-6">
+  <div class="bg-background rounded-xl p-12 max-w-md w-full text-center shadow-2xl flex flex-col items-center gap-6 animate-bounce-in">
+    <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center">
+      <span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings:'FILL' 1;">check_circle</span>
+    </div>
+    <h2 class="font-headline text-4xl text-primary">Order Placed!</h2>
+    <p class="font-body text-on-surface-variant text-sm leading-relaxed">
+      Thank you for your order. You'll receive a confirmation email shortly. Your pieces are being prepared with care.
+    </p>
+    <div class="bg-surface-container-low rounded p-4 w-full flex flex-col gap-1">
+      <p class="font-label text-xs uppercase tracking-widest text-secondary">Order Reference</p>
+      <p class="font-headline text-xl" id="order-ref">#SS-00001</p>
+    </div>
+    <a href="index.html" class="w-full bg-primary text-on-primary font-label text-xs uppercase tracking-[0.2em] py-4 rounded hover:bg-primary-container transition-colors flex items-center justify-center gap-2 mt-2">
+      Continue Shopping <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+    </a>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-surface-container py-12 mt-8">
+  <div class="flex flex-col md:flex-row gap-6 justify-between items-center px-8 md:px-16 max-w-[1440px] mx-auto">
+    <span class="font-headline italic text-lg text-on-surface">Stitch &amp; Soul</span>
+    <p class="font-label text-[10px] uppercase tracking-[0.2em] text-secondary">© 2026 Stitch &amp; Soul. Crafted for the Modern Curator.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+// Format card number input
+document.getElementById('cardNumber').addEventListener('input', e => {
+  let val = e.target.value.replace(/\D/g,'').slice(0,16);
+  e.target.value = val.replace(/(.{4})/g,'$1 ').trim();
+});
+document.getElementById('cardExpiry').addEventListener('input', e => {
+  let val = e.target.value.replace(/\D/g,'').slice(0,4);
+  if (val.length >= 3) val = val.slice(0,2) + '/' + val.slice(2);
+  e.target.value = val;
+});
+document.getElementById('cardCvc').addEventListener('input', e => {
+  e.target.value = e.target.value.replace(/\D/g,'').slice(0,4);
+});
+
+function loadOrderSummary() {
+  const items = Cart.getItems();
+  const notice = document.getElementById('empty-checkout-notice');
+  const formContainer = document.getElementById('checkout-form-container');
+
+  if (items.length === 0) {
+    notice.classList.remove('hidden');
+    notice.classList.add('flex');
+    formContainer.classList.add('hidden');
+    return;
+  }
+
+  const itemsEl = document.getElementById('checkout-items');
+  itemsEl.innerHTML = items.map(item => `
+    <div class="flex gap-4 items-center">
+      <div class="w-14 h-16 bg-surface-container rounded overflow-hidden flex-shrink-0">
+        <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover"/>
+      </div>
+      <div class="flex flex-col flex-grow min-w-0">
+        <span class="font-headline text-sm truncate">${item.name}</span>
+        <span class="font-body text-xs text-secondary uppercase tracking-widest">${item.size} · ${item.color}</span>
+        <span class="font-body text-xs text-on-surface-variant">Qty: ${item.quantity}</span>
+      </div>
+      <span class="font-body font-semibold text-sm shrink-0">${formatPrice(item.price * item.quantity)}</span>
+    </div>
+  `).join('');
+
+  const subtotal = Cart.getTotal();
+  document.getElementById('co-subtotal').textContent = formatPrice(subtotal);
+  document.getElementById('co-total').textContent = formatPrice(subtotal + 15);
+}
+
+function clearError(fieldId) {
+  const el = document.getElementById(fieldId);
+  if (el) el.classList.remove('field-error');
+  const msg = document.getElementById('err-' + fieldId);
+  if (msg) msg.classList.remove('visible');
+}
+
+function setError(fieldId) {
+  const el = document.getElementById(fieldId);
+  if (el) el.classList.add('field-error');
+  const msg = document.getElementById('err-' + fieldId);
+  if (msg) msg.classList.add('visible');
+}
+
+function validateForm() {
+  let valid = true;
+  const required = ['fullName','address','phone','email','city','zip'];
+  required.forEach(f => {
+    clearError(f);
+    const el = document.getElementById(f);
+    if (!el) return;
+    if (!el.value.trim()) { setError(f); valid = false; }
+  });
+
+  // Email format
+  const email = document.getElementById('email');
+  if (email && email.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+    setError('email'); valid = false;
+  }
+
+  // Card fields if card payment selected
+  const payMethod = document.querySelector('input[name="paymentMethod"]:checked')?.value;
+  if (payMethod === 'card') {
+    const cardFields = ['cardNumber','cardExpiry','cardCvc'];
+    cardFields.forEach(f => clearError(f));
+    const cn = document.getElementById('cardNumber').value.replace(/\s/g,'');
+    if (cn.length !== 16) { setError('cardNumber'); valid = false; }
+    const exp = document.getElementById('cardExpiry').value;
+    if (!/^\d{2}\/\d{2}$/.test(exp)) { setError('cardExpiry'); valid = false; }
+    const cvc = document.getElementById('cardCvc').value;
+    if (cvc.length < 3) { setError('cardCvc'); valid = false; }
+  }
+
+  return valid;
+}
+
+function placeOrder() {
+  if (!validateForm()) {
+    showToast('Please fill in all required fields', 'error');
+    return;
+  }
+
+  const btn = document.getElementById('place-order-btn');
+  btn.disabled = true;
+  btn.innerHTML = `<span class="material-symbols-outlined text-[20px] animate-spin">progress_activity</span> Processing…`;
+
+  setTimeout(() => {
+    Cart.clear();
+    const ref = '#SS-' + String(Math.floor(10000 + Math.random() * 90000));
+    document.getElementById('order-ref').textContent = ref;
+    document.getElementById('success-modal').classList.remove('hidden');
+    document.getElementById('success-modal').classList.add('flex');
+  }, 1800);
+}
+
+// Clear errors on input
+document.querySelectorAll('input').forEach(input => {
+  input.addEventListener('input', () => clearError(input.id));
+});
+
+loadOrderSummary();
+</script>
+</body>
+</html>
