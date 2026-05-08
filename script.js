@@ -80,22 +80,10 @@ const PRODUCTS = [
     image: "images/Red Floral Kurti.jpeg",
     badge: null
   },
-  {
-    id: 7,
-    name: "Couple Printed T-Shirt Set",
-    price: 65,
-    category: "eastern-women",
-    sizes: ["XS","S","M","L","XL"],
-    colors: ["White","Cream","Black"],
-    description: "Fun couple-themed printed t-shirt set combining traditional appeal with modern comfort. Perfect for casual outings and relaxed celebrations.",
-    features: ["100% Cotton","Comfortable Fit","Printed Design"],
-    image: "images/Copule Printed T-Shirt set.jpeg",
-    badge: null
-  },
   
   // ── WESTERN WEAR ─────────────────────────────────────
   {
-    id: 8,
+    id: 7,
     name: "The Yapper & Listener Graphic Tee",
     price: 45,
     category: "western",
@@ -107,7 +95,7 @@ const PRODUCTS = [
     badge: null
   },
   {
-    id: 9,
+    id: 8,
     name: "Her One & His Only Couple Tee",
     price: 50,
     category: "western",
@@ -119,7 +107,7 @@ const PRODUCTS = [
     badge: null
   },
   {
-    id: 10,
+    id: 9,
     name: "Forever & Together Couple Tee",
     price: 48,
     category: "western",
@@ -128,6 +116,18 @@ const PRODUCTS = [
     description: "Romantic couple graphic tee with sweet line art designs. Celebrate your bond with this charming and comfortable casual piece.",
     features: ["100% Organic Cotton","Soft Print","Relaxed Fit"],
     image: "images/western 3.jpeg",
+    badge: null
+  },
+  {
+    id: 10,
+    name: "Couple Printed T-Shirt Set",
+    price: 65,
+    category: "western",
+    sizes: ["XS","S","M","L","XL"],
+    colors: ["White","Cream","Black"],
+    description: "Fun couple-themed printed t-shirt set with modern comfort. Perfect for casual outings and everyday wear.",
+    features: ["100% Cotton","Comfortable Fit","Printed Design"],
+    image: "images/Copule Printed T-Shirt set.jpeg",
     badge: null
   },
   
