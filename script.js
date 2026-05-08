@@ -15,7 +15,7 @@ const PRODUCTS = [
     colors: ["Chocolate","Cream","Black"],
     description: "Traditional kurta pajama set in rich chocolate brown. A timeless piece offering comfort and elegance for any occasion. Perfect blend of heritage and contemporary style.",
     features: ["100% Cotton Blend","Traditional Cut","Embroidered Detailing"],
-    image: "images/eastern male.jpeg",
+    image: "images/Black Shalwar Kameez.jpeg",
     badge: null
   },
   {
