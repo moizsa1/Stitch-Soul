@@ -8,18 +8,6 @@ const PRODUCTS = [
   // ── EASTERN MEN ──────────────────────────────────────
   {
     id: 1,
-    name: "Chocolate Kurta Pajama Set",
-    price: 165,
-    category: "eastern-men",
-    sizes: ["S","M","L","XL","XXL"],
-    colors: ["Chocolate","Cream","Black"],
-    description: "Traditional kurta pajama set in rich chocolate brown. A timeless piece offering comfort and elegance for any occasion. Perfect blend of heritage and contemporary style.",
-    features: ["100% Cotton Blend","Traditional Cut","Embroidered Detailing"],
-    image: "images/Black Shalwar Kameez.jpeg",
-    badge: null
-  },
-  {
-    id: 2,
     name: "Black Shalwar Kameez",
     price: 148,
     category: "eastern-men",
@@ -31,7 +19,7 @@ const PRODUCTS = [
     badge: null
   },
   {
-    id: 3,
+    id: 2,
     name: "Brown Traditional Shalwar Kameez",
     price: 155,
     category: "eastern-men",
@@ -43,7 +31,7 @@ const PRODUCTS = [
     badge: null
   },
   {
-    id: 4,
+    id: 3,
     name: "Cream Shalwar Kameez",
     price: 142,
     category: "eastern-men",
@@ -57,7 +45,7 @@ const PRODUCTS = [
   
   // ── EASTERN WOMEN ────────────────────────────────────
   {
-    id: 5,
+    id: 4,
     name: "Celestial Star Embroidered Kurti",
     price: 195,
     category: "eastern-women",
@@ -69,7 +57,7 @@ const PRODUCTS = [
     badge: "New"
   },
   {
-    id: 6,
+    id: 5,
     name: "Red Floral Kurti",
     price: 175,
     category: "eastern-women",
@@ -83,7 +71,7 @@ const PRODUCTS = [
   
   // ── WESTERN WEAR ─────────────────────────────────────
   {
-    id: 7,
+    id: 6,
     name: "The Yapper & Listener Graphic Tee",
     price: 45,
     category: "western",
@@ -95,7 +83,7 @@ const PRODUCTS = [
     badge: null
   },
   {
-    id: 8,
+    id: 7,
     name: "Her One & His Only Couple Tee",
     price: 50,
     category: "western",
@@ -107,7 +95,7 @@ const PRODUCTS = [
     badge: null
   },
   {
-    id: 9,
+    id: 8,
     name: "Forever & Together Couple Tee",
     price: 48,
     category: "western",
@@ -119,7 +107,7 @@ const PRODUCTS = [
     badge: null
   },
   {
-    id: 10,
+    id: 9,
     name: "Couple Printed T-Shirt Set",
     price: 65,
     category: "western",
@@ -133,7 +121,7 @@ const PRODUCTS = [
   
   // ── SHAWLS ───────────────────────────────────────────
   {
-    id: 11,
+    id: 10,
     name: "Biege Soft Wool Shawl",
     price: 85,
     category: "shawls",
@@ -145,7 +133,7 @@ const PRODUCTS = [
     badge: null
   },
   {
-    id: 12,
+    id: 11,
     name: "Classic Winter Shawl Set",
     price: 95,
     category: "shawls",
@@ -157,7 +145,7 @@ const PRODUCTS = [
     badge: "New"
   },
   {
-    id: 13,
+    id: 12,
     name: "Traditional Printed Shawl",
     price: 92,
     category: "shawls",
@@ -169,7 +157,7 @@ const PRODUCTS = [
     badge: null
   },
   {
-    id: 14,
+    id: 13,
     name: "White Ethnic Border Shawl",
     price: 88,
     category: "shawls",
